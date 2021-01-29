@@ -122,7 +122,15 @@ let sortButton = document.querySelector("#sortButton");
 sortButton.addEventListener("click", loadItems);
 
 let deleteAllButton = document.querySelector("#deleteAllButton");
-deleteAllButton.addEventListener("click", deleteAll);
+deleteAllButton.addEventListener("click", deleteCompletedToDo);
 
-//foreach through all li 
-//if class = 'completed', then run delete to do
+
+async function deleteCompletedToDo() {
+  const res = await fetch(`${BACKEND_URL}/items/`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    location.reload();
+  }
+}
+//DeleteCompletedItem

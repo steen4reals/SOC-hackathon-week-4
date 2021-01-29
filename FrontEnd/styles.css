@@ -1,3 +1,31 @@
 .completed {
   color: lightgreen;
 }
+body {
+  background-color: aquamarine;
+  align-items: center;
+}
+
+#sortButton, #deleteAllButton {
+    padding: 5px 8px;
+    margin-top: 10px;
+    border: 1px solid #ED2939;
+    border-radius: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    background-color: pink;    
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; 
+}
+
+h1 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 45px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+label {
+  font-size: 20px;
+}
