@@ -120,3 +120,9 @@ async function loadItems() {
 let sortButton = document.querySelector("#sortButton");
 //document.body.appendChild(sortButton);
 sortButton.addEventListener("click", loadItems);
+
+let deleteAllButton = document.querySelector("#deleteAllButton");
+deleteAllButton.addEventListener("click", deleteAll);
+
+//foreach through all li 
+//if class = 'completed', then run delete to do
