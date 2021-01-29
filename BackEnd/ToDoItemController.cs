@@ -24,6 +24,12 @@ public class ToDoItemController : ControllerBase {
         return _toDoItemRepository.GetOne(id);  
     }
 
+    [HttpDelete]
+    public void DeleteCompletedItem()
+    {
+        _toDoItemRepository.DeleteComplete();
+    }
+
     [HttpDelete("{Id}")]
     public void DeleteItem(long id)
     {
