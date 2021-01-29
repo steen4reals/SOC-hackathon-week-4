@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("Items")]
+[Route("items")]
 
 public class ToDoItemController : ControllerBase {
 

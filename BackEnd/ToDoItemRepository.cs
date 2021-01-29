@@ -25,14 +25,13 @@ public class ToDoItemRepository : BaseRepository
     public ToDoItem Update(ToDoItem toDoItem)
     {
         using var connection = CreateConnection();
-        connection.QuerySingle<ToDoItem>("UPDATE ToDoItems SET Title =@Title, Priority =@Prioirity IsComplete =@IsComplete WHERE id=@Id RETURNING Id, Title, Priority, IsComplete;", toDoItem);
-
+        return connection.QuerySingle<ToDoItem>("UPDATE ToDoItems SET Title =@Title, Priority =@Priority, IsComplete =@IsComplete WHERE id=@Id RETURNING Id, Title, Priority, IsComplete;", toDoItem);
     }
 
     public ToDoItem Create(ToDoItem toDoItem)
     {
         using var connection = CreateConnection();
-        connection.QuerySingle<ToDoItem>("INSERT INTO ToDoItems (Title, Priority, IsComplete) VALUES (@Title, @Priority, @IsComplete) RETURNING Id, Title, Priority, IsComplete;", toDoItem);
+        return connection.QuerySingle<ToDoItem>("INSERT INTO ToDoItems (Title, Priority, IsComplete) VALUES (@Title, @Priority, @IsComplete) RETURNING Id, Title, Priority, IsComplete;", toDoItem);
     }
 
 }
