@@ -95,24 +95,14 @@ loadInitialToDos();
 
 function compare(a, b){
 
-  if (a.priority == "high" && b.priority == "medium") {
+  if (a.priority == "high" && b.priority == "medium" || a.priority == "high" && b.priority == "low" || a.priority == "medium" && b.priority == "low") {
     return -1;
   }
-  if (a.priority == "high" && b.priority == "low") {
-    return -1;
-  }
-  if (a.priority == "medium" && b.priority == "low") {
-    return -1;
-  }
-  if (a.priority == "medium" && b.priority == "high") {
+  
+  if (a.priority == "medium" && b.priority == "high" || a.priority == "low" && b.priority == "high" ||a.priority == "low" && b.priority == "medium") {
     return 1;
   }
-  if (a.priority == "low" && b.priority == "high") {
-    return 1;
-  }
-  if (a.priority == "low" && b.priority == "medium") {
-    return 1;
-  }
+  
   return 0;
 }
 
@@ -122,13 +112,11 @@ async function loadItems() {
 
   const res = await fetch(`${BACKEND_URL}/items`);
   const data = await res.json();
-  //console.log(data);
-  //const data2 = data.sort(compare);
+  
   data.sort(compare);
-  console.log(data);
   data.forEach(renderToDo);
 }
 
 let sortButton = document.querySelector("#sortButton");
-document.body.appendChild(sortButton);
+//document.body.appendChild(sortButton);
 sortButton.addEventListener("click", loadItems);
