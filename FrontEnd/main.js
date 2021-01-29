@@ -4,7 +4,7 @@ const inputForm = document.querySelector("#input-form");
 const BACKEND_URL = "http://localhost:5000";
 
 async function loadInitialToDos() {
-  const res = await fetch(`${BACKEND_URL}/todoitems`);
+  const res = await fetch(`${BACKEND_URL}/items`);
   const data = await res.json();
   data.forEach(renderToDo);
 }
@@ -53,7 +53,7 @@ async function handleAddToDo(event) {
     priority: event.target[1].value,
   };
   // sent to database and recieve full item including id
-  const completeTodo = await sendToDo("/todoitems", "POST", partialTodo);
+  const completeTodo = await sendToDo("/items", "POST", partialTodo);
   event.target.reset();
   renderToDo(completeTodo);
 }
@@ -72,7 +72,7 @@ async function sendToDo(path, method, body = "") {
 
 async function toggleToDoComplete(toDoItem) {
   const li = document.querySelector(`#to-do-item-${toDoItem.id}`);
-  await sendToDo(`/todoitems/${toDoItem.id}`, "PUT", {
+  await sendToDo(`/items/${toDoItem.id}`, "PUT", {
     ...toDoItem,
     isComplete: !li.classList.contains("completed"),
   });
@@ -80,7 +80,7 @@ async function toggleToDoComplete(toDoItem) {
 }
 
 async function deleteToDo(toDoItem) {
-  const res = await fetch(`${BACKEND_URL}/todoitems/${toDoItem.id}`, {
+  const res = await fetch(`${BACKEND_URL}/items/${toDoItem.id}`, {
     method: "DELETE",
   });
   if (res.ok) {
